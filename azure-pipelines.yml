@@ -20,4 +20,9 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
+- task: Docker@2
+  inputs:
+    containerRegistry: 'myACR'
+    repository: 'test'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
