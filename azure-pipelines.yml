@@ -26,3 +26,12 @@ steps:
     repository: 'eureka'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'MyAKS'
+    command: 'apply'
+    useConfigurationFile: true
+    configuration: 'kubernetes.yml'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
