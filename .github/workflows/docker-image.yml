@@ -7,16 +7,27 @@ on:
     branches: [ master ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: echo "hello" #docker build . --file Dockerfile --tag eureka:$(date +%s)
     - name: Run Tests
       run: echo "tests" 
+  
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: echo "hello" #docker build . --file Dockerfile --tag eureka:$(date +%s)
+    - name: Run Tests
+      run: echo "tests" 
+      
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - name: Deploy
       run: echo "deploy"       
